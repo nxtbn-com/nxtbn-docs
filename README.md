@@ -1,3 +1,5 @@
+🚧 **The project is under development, please check back after one month for a stable version.** ⏳
+
 # Next Billion Native Commerce - nxtbn documentation
 
 We use Sphinx for our documentation. To build the documentation in HTML format, follow these steps:
