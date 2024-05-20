@@ -56,7 +56,7 @@ html_theme_options = {
     "announcement": "beta",
     "source_repository": "https://github.com/nxtbn-com/nxtbn-docs/",
     "source_branch": "main",
-    "source_directory": "/",
+    "source_directory": "/source",
 }
 
 latex_elements = {
