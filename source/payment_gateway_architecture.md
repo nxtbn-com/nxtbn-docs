@@ -41,7 +41,7 @@ Advanced Topic:  payment gateway integration
 nxtbn/nxtbn/payment/base.py
 ```
 
-All payment gateways should inherit from the `BasePaymentGateway` abstract base class. This class defines the interface that each payment gateway must implement.
+All payment gateways should inherit from the `PaymentPlugin` abstract base class. This class defines the interface that each payment gateway must implement.
 
 
 
@@ -62,7 +62,7 @@ class PaymentResponse:
     raw_data: Optional[Any] = None
     meta_data: Optional[Any] = None
 
-class BasePaymentGateway(ABC):
+class PaymentPlugin(ABC):
     def __init__(self, context: dict = None):
         self.context = context or {}
 
@@ -205,7 +205,7 @@ Here is an example implementation of the `StripePaymentGateway`.
 import stripe
 from decimal import Decimal
 from django.conf import settings
-from nxtbn.payment.base_payment_gateway import BasePaymentGateway, PaymentResponse
+from nxtbn.payment.base import PaymentPlugin, PaymentResponse
 from rest_framework import serializers
 from nxtbn.settings import get_env_var
 
@@ -214,7 +214,7 @@ stripe.api_key = get_env_var('STRIPE_SECRET_KEY', '')
 class StripePayloadSerializer(serializers.Serializer):
     stripe_payment_method_id = serializers.CharField(max_length=500, required=True)
 
-class StripePaymentGateway(BasePaymentGateway):
+class StripePaymentGateway(PaymentPlugin):
     gateway_name = 'stripe'
 
     def authorize(self, amount: Decimal, order_id: str, **kwargs):
@@ -309,7 +309,7 @@ import stripe
 from decimal import Decimal
 from typing import Optional, Any, Dict
 from nxtbn.order.models import Order
-from nxtbn.payment.base_payment_gateway import BasePaymentGateway, PaymentResponse
+from nxtbn.payment.base import PaymentPlugin, PaymentResponse
 from rest_framework import serializers, status
 from rest_framework.response import Response
 from nxtbn.payment.models import Payment
@@ -329,7 +329,7 @@ class StripeSerializer(serializers.Serializer):
     """"Need to define at least a serialize, dummy as it is cod, no additional payload will come from payment gateway"""
     pass
 
-class StripePaymentLinkGateway(BasePaymentGateway):
+class StripePaymentLinkGateway(PaymentPlugin):
     gateway_name = 'stripe'
 
     def authorize(self, amount: Decimal, order_id: str, **kwargs):
@@ -596,10 +596,10 @@ You can customize the API endpoint directly from your plugin class. No API endpo
 To add a new payment gateway:
 
 1. Create a new file in nxtbn.payment.plugin/ for the new gateway.
-2. Implement the gateway by inheriting from BasePaymentGateway.
+2. Implement the gateway by inheriting from PaymentPlugin.
 3. Ensure the gateway class follows the structure and implements all the abstract methods.
 
 For example, to add PayPal:
 
 Create `paypal_gateway.py` in `nxtbn.payment.plugin/paypal`.
-Implement the class `PayPalPaymentGateway` inheriting from `BasePaymentGateway`.
+Implement the class `PayPalPaymentGateway` inheriting from `PaymentPlugin`.
