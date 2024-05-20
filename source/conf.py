@@ -10,7 +10,8 @@ release = ''
 
 extensions = [
     'sphinx.ext.viewcode',
-    'myst_parser'
+    'myst_parser',
+    'sphinx_copybutton'
 ]
 
 
