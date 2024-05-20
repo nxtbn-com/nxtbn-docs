@@ -33,17 +33,12 @@ So, you have already integrated the API and are accepting payments, but how does
 Advanced Topic:  payment gateway integration
 ----------------------------------------------
 
-![](./_static/unified_payment_gateway_flow.png)
-
-
-
-### Key Components
 
 ### Abstract Base Class for Payment Gateways
 ```{admonition} file
 :class: note
 
-nxtbn/nxtbn/payment/base_payment_gateway.py
+nxtbn/nxtbn/payment/base.py
 ```
 
 All payment gateways should inherit from the `BasePaymentGateway` abstract base class. This class defines the interface that each payment gateway must implement.
