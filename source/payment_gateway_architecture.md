@@ -197,7 +197,8 @@ class PaymentManager:
 
 ```
 
-### Example Integration: Stripe (for self-hosted checkout form & direct capture)
+### Example Integration: Stripe (for self-hosted checkout form and direct capture)
+
 
 ```{admonition} file
 :class: note
@@ -299,7 +300,7 @@ __all__ = ['gateway']
 
 ```
 
-### Example Integration: Stripe (for payment link and webhook listen)
+### Example Integration: Stripe (for payment link and webhook listener)
 
 ```{admonition} file
 :class: note
