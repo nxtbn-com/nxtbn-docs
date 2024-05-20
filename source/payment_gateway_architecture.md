@@ -9,23 +9,23 @@ The Unified Payment Gateway Architecture is designed to simplify the integration
 
 
 
-#### For Guest User Endpoint
+### For Guest User Endpoint
 
 `API: POST: /order/storefront/api/guest-user-order-create/{payment_plugin_id}/`
 
-#### Returning User Endpoint
+### Returning User Endpoint
 
 `API: POST /order/storefront/api/user-order-create/{payment_plugin_id}/`
 
 If you allow only authenticated users to place orders, then this API is for you. The payload and URL argument are the same as the guest order API.
 
-#### Webhook & IPN
+### Webhook & IPN
 
 `API: POST /payment/storefront/api/webhook-view/{payment_plugin_id}/`
 
 So, you have already integrated the API and are accepting payments, but how does your store backend know which user paid for what? That is where we come with a single webhook listener for all APIs.
 
-#### Definition
+### Definition
 
 `payment_plugin_id` is a URL argument that is the name of the payment plugin you installed. Let's say you have installed/built a payment plugin for Stripe. When you install or build, the plugin will be located here: `nxtbn.payment.plugins.stripe`. So here, `stripe` is your `payment_plugin_id`. Similarly, if you install PayPal or Authorize.Net, it will be located here: `nxtbn.payment.plugins.paypal`, and here, your `payment_plugin_id` is `'paypal'`. Similar work for other payment gateways too.
 
@@ -124,7 +124,7 @@ class BasePaymentGateway(ABC):
         return int(amount) / 100
 ```
 
-## Payment Manager
+### Payment Manager
 ```{admonition} file
 :class: note
 nxtbn/nxtbn/payment/payment_manager.py
@@ -197,7 +197,7 @@ class PaymentManager:
 
 ```
 
-## Example Integration: Stripe (for self-hosted checkout form & direct capture)
+### Example Integration: Stripe (for self-hosted checkout form & direct capture)
 
 ```{admonition} file
 :class: note
@@ -299,7 +299,7 @@ __all__ = ['gateway']
 
 ```
 
-## Example Integration: Stripe (for payment link and webhook listen)
+### Example Integration: Stripe (for payment link and webhook listen)
 
 ```{admonition} file
 :class: note
@@ -465,7 +465,7 @@ class StripePaymentLinkGateway(BasePaymentGateway):
         return Response(status=status.HTTP_200_OK)
 ```
 
-## API Endpoints (built-in)
+### API Endpoints (built-in)
 ```{admonition} file
 :class: note
 nxtbn/nxtbn/order/api/storefront/views.py
@@ -536,7 +536,7 @@ urlpatterns = [
 ]
 ```
 
-## API endpoint for webhook & IPN
+### API endpoint for webhook & IPN
 ```{admonition} file
 :class: note
 nxtbn/nxtbn/payment/api/storefront/views.py
@@ -595,7 +595,7 @@ We recommend not updating the API endpoint as we have tested with over 40 paymen
 You can customize the API endpoint directly from your plugin class. No API endpoint update is required. Modifying the API endpoint may disrupt the system.
 ```
 
-## Adding a New Payment Gateway
+### Adding a New Payment Gateway
 
 To add a new payment gateway:
 
