@@ -54,9 +54,9 @@ html_theme_options = {
     "navigation_with_keys": True,
     "top_of_page_buttons": ["view", "edit"],
     "announcement": "beta",
-    "source_repository": "https://github.com/nxtbn-com/nxtbn-docs/",
+    "source_repository": "https://github.com/nxtbn-com/nxtbn-docs",
     "source_branch": "main",
-    "source_directory": "/source",
+    "source_directory": "source",
 }
 
 latex_elements = {
