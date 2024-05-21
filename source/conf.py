@@ -11,8 +11,11 @@ release = ''
 extensions = [
     'sphinx.ext.viewcode',
     'myst_parser',
-    'sphinx_copybutton'
+    'sphinx_copybutton',
+    'sphinx_sitemap'
 ]
+
+html_baseurl = 'https://docs.nxtbn.com' # 'sphinx_sitemap' specfic
 
 
 templates_path = ["_templates"]
