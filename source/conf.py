@@ -11,9 +11,23 @@ release = ''
 extensions = [
     'sphinx.ext.viewcode',
     'myst_parser',
-    'sphinx_copybutton'
+    'sphinx_copybutton',
+    'sphinx_sitemap',
+    'sphinxext.opengraph',
+    'sphinxcontrib.googleanalytics',
 ]
 
+html_baseurl = 'https://docs.nxtbn.com' # 'sphinx_sitemap' specfic
+
+html_extra_path = ['robots.txt']
+
+html_favicon = '_static/favicon.ico'
+
+googleanalytics_id = 'G-GGJRLNZ2DL'
+
+
+ogp_site_url = "https://docs.nxtbn.com/"
+ogp_site_name = "nxtbn | Next Billion Native Commerce - docs"
 
 templates_path = ["_templates"]
 
