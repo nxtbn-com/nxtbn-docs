@@ -12,13 +12,19 @@ extensions = [
     'sphinx.ext.viewcode',
     'myst_parser',
     'sphinx_copybutton',
-    'sphinx_sitemap'
+    'sphinx_sitemap',
+    'sphinxext.opengraph',
 ]
 
 html_baseurl = 'https://docs.nxtbn.com' # 'sphinx_sitemap' specfic
 
 html_extra_path = ['robots.txt']
 
+html_favicon = '_static/favicon.ico'
+
+
+ogp_site_url = "https://docs.nxtbn.com/"
+ogp_site_name = "nxtbn | Next Billion Native Commerce - docs"
 
 templates_path = ["_templates"]
 
