@@ -5,4 +5,5 @@ payment gateway
    :maxdepth: 2
    :caption: Contents:
 
-   payment_gateway_architecture
+   payment_unified_endpoint
+   code_example
