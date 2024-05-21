@@ -14,6 +14,7 @@ extensions = [
     'sphinx_copybutton',
     'sphinx_sitemap',
     'sphinxext.opengraph',
+    'sphinxcontrib.googleanalytics',
 ]
 
 html_baseurl = 'https://docs.nxtbn.com' # 'sphinx_sitemap' specfic
@@ -21,6 +22,8 @@ html_baseurl = 'https://docs.nxtbn.com' # 'sphinx_sitemap' specfic
 html_extra_path = ['robots.txt']
 
 html_favicon = '_static/favicon.ico'
+
+googleanalytics_id = 'G-GGJRLNZ2DL'
 
 
 ogp_site_url = "https://docs.nxtbn.com/"
