@@ -16,10 +16,10 @@ extensions = [
     'sphinx.ext.viewcode',
     'myst_parser',
     'sphinx_copybutton',
-    'sphinx_sitemap',
     'sphinxext.opengraph',
     'sphinxcontrib.googleanalytics',
-    'sitemap_postprocess', # to remove .html extesion in sitemap
+    #'sphinx_sitemap',
+    #'sitemap_postprocess', # to remove .html extesion in sitemap
 ]
 
 html_baseurl = 'https://docs.nxtbn.com' # 'sphinx_sitemap' specfic
