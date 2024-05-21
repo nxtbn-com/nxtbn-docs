@@ -1,3 +1,7 @@
+import os
+import sys
+sys.path.insert(0, os.path.abspath('.')) # to import my own plugin
+
 project = 'nxtbn'
 copyright = '2024,bytenyx limited'
 author = 'bytenyx limited'
@@ -15,9 +19,11 @@ extensions = [
     'sphinx_sitemap',
     'sphinxext.opengraph',
     'sphinxcontrib.googleanalytics',
+    'sitemap_postprocess', # to remove .html extesion in sitemap
 ]
 
 html_baseurl = 'https://docs.nxtbn.com' # 'sphinx_sitemap' specfic
+
 
 html_extra_path = ['robots.txt']
 
@@ -42,7 +48,7 @@ source_suffix = {
 master_doc = 'index'
 
 
-language = 'en'
+language = None
 
 
 exclude_patterns = []
