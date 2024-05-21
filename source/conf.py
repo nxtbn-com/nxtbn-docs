@@ -17,6 +17,8 @@ extensions = [
 
 html_baseurl = 'https://docs.nxtbn.com' # 'sphinx_sitemap' specfic
 
+html_extra_path = ['robots.txt']
+
 
 templates_path = ["_templates"]
 
