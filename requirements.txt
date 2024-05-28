@@ -7,3 +7,4 @@ sphinx-sitemap==2.6.0
 sphinxext-opengraph==0.9.1
 sphinxcontrib-googleanalytics==0.4
 lxml==5.2.2
+sphinxcontrib-redoc==1.6.0

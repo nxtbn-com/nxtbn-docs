@@ -1,0 +1,1812 @@
+swagger: '2.0'
+info:
+  title: nxtbn API
+  description: API documentation for nxtbn App
+  version: v1
+host: 127.0.0.1:8001
+schemes:
+- http
+basePath: /
+consumes:
+- application/json
+produces:
+- application/json
+securityDefinitions:
+  api_key:
+    type: apiKey
+    in: header
+    name: Authorization
+security:
+- api_key: []
+paths:
+  /order/storefront/api/guest-user-order-create/{payment_plugin_id}/:
+    post:
+      operationId: order_storefront_api_guest-user-order-create_create
+      summary: API endpoint to create an anonymous user order.
+      description: |-
+        This view allows anonymous users to create orders. The serializer used for the order creation
+        is determined dynamically based on the payment gateway ID provided in the URL.
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/GuestOrder'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/GuestOrder'
+      tags:
+      - order
+    parameters:
+    - name: payment_plugin_id
+      in: path
+      required: true
+      type: string
+  /order/storefront/api/orders/:
+    get:
+      operationId: order_storefront_api_orders_list
+      description: ''
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+            - count
+            - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/Order'
+      tags:
+      - order
+    parameters: []
+  /order/storefront/api/user-order-create/{payment_plugin_id}/:
+    post:
+      operationId: order_storefront_api_user-order-create_create
+      summary: API endpoint to create an authenticated user order.
+      description: |-
+        This view allows authenticated users to create orders. The serializer used for the order creation
+        is determined dynamically based on the payment gateway ID provided in the URL.
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/AuthenticatedUserOrder'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/AuthenticatedUserOrder'
+      tags:
+      - order
+    parameters:
+    - name: payment_plugin_id
+      in: path
+      required: true
+      type: string
+  /payment/storefront/api/non-sensitive-payment-info/{payment_plugin_id}/:
+    get:
+      operationId: payment_storefront_api_non-sensitive-payment-info_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - payment
+    parameters:
+    - name: payment_plugin_id
+      in: path
+      required: true
+      type: string
+  /payment/storefront/api/webhook-view/{payment_plugin_id}/:
+    get:
+      operationId: payment_storefront_api_webhook-view_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - payment
+    post:
+      operationId: payment_storefront_api_webhook-view_create
+      description: ''
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+      - payment
+    parameters:
+    - name: payment_plugin_id
+      in: path
+      required: true
+      type: string
+  /product/storefront/api/categories/:
+    get:
+      operationId: product_storefront_api_categories_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Category'
+      tags:
+      - product
+    parameters: []
+  /product/storefront/api/collections/:
+    get:
+      operationId: product_storefront_api_collections_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Collection'
+      tags:
+      - product
+    parameters: []
+  /product/storefront/api/products/:
+    get:
+      operationId: product_storefront_api_products_list
+      description: ''
+      parameters:
+      - name: name
+        in: query
+        description: name
+        required: false
+        type: string
+      - name: summary
+        in: query
+        description: summary
+        required: false
+        type: string
+      - name: description
+        in: query
+        description: description
+        required: false
+        type: string
+      - name: category
+        in: query
+        description: category
+        required: false
+        type: string
+      - name: vendor
+        in: query
+        description: vendor
+        required: false
+        type: string
+      - name: brand
+        in: query
+        description: brand
+        required: false
+        type: string
+      - name: type
+        in: query
+        description: type
+        required: false
+        type: string
+      - name: related_to
+        in: query
+        description: related_to
+        required: false
+        type: string
+      - name: collection
+        in: query
+        description: collection
+        required: false
+        type: string
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        type: string
+      - name: ordering
+        in: query
+        description: Which field to use when ordering the results.
+        required: false
+        type: string
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+            - count
+            - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/Product'
+      tags:
+      - product
+    parameters: []
+  /product/storefront/api/products/{slug}/:
+    get:
+      operationId: product_storefront_api_products_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProductDetail'
+      tags:
+      - product
+    parameters:
+    - name: slug
+      in: path
+      required: true
+      type: string
+      format: slug
+      pattern: ^[-a-zA-Z0-9_]+$
+  /user/storefront/api/login/:
+    post:
+      operationId: user_storefront_api_login_create
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/LoginRequest'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/LoginRequest'
+      tags:
+      - user
+    parameters: []
+  /user/storefront/api/refresh/:
+    post:
+      operationId: user_storefront_api_refresh_create
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Refresh'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Refresh'
+      tags:
+      - user
+    parameters: []
+  /user/storefront/api/signup/:
+    post:
+      operationId: user_storefront_api_signup_create
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Signup'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Signup'
+      tags:
+      - user
+    parameters: []
+definitions:
+  Address:
+    required:
+    - street_address
+    - city
+    - state
+    - postal_code
+    - country
+    - first_name
+    - last_name
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      created_at:
+        title: Created at
+        type: string
+        format: date-time
+        readOnly: true
+      last_modified:
+        title: Last modified
+        type: string
+        format: date-time
+        readOnly: true
+      street_address:
+        title: Street address
+        type: string
+        maxLength: 255
+        minLength: 1
+      city:
+        title: City
+        type: string
+        maxLength: 100
+        minLength: 1
+      state:
+        title: State
+        type: string
+        maxLength: 100
+        minLength: 1
+      postal_code:
+        title: Postal code
+        type: string
+        maxLength: 20
+        minLength: 1
+      country:
+        title: Country
+        type: string
+        maxLength: 100
+        minLength: 1
+      first_name:
+        title: First name
+        type: string
+        maxLength: 50
+        minLength: 1
+      last_name:
+        title: Last name
+        type: string
+        maxLength: 50
+        minLength: 1
+      phone_number:
+        title: Phone number
+        type: string
+        maxLength: 15
+        x-nullable: true
+      email_address:
+        title: Email address
+        type: string
+        format: email
+        maxLength: 254
+        x-nullable: true
+      is_default_delivery_address:
+        title: Is default delivery address
+        type: boolean
+  OrderItem:
+    required:
+    - quantity
+    - price_per_unit
+    - variant
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      quantity:
+        title: Quantity
+        type: integer
+        maximum: 2147483647
+        minimum: 1
+      price_per_unit:
+        title: Price per unit
+        type: string
+        format: decimal
+      currency:
+        title: Currency
+        type: string
+        enum:
+        - USD
+        - EUR
+        - GBP
+        - JPY
+        - AUD
+        - CAD
+        - CHF
+        - CNY
+        - SEK
+        - NZD
+        - INR
+        - BRL
+        - RUB
+        - ZAR
+        - AED
+        - AFN
+        - ALL
+        - AMD
+        - ANG
+        - AOA
+        - ARS
+        - AWG
+        - AZN
+        - BAM
+        - BBD
+        - BDT
+        - BGN
+        - BHD
+        - BIF
+        - BMD
+        - BND
+        - BOB
+        - BSD
+        - BTN
+        - BWP
+        - BYN
+        - BZD
+        - CDF
+        - CLP
+        - COP
+        - CRC
+        - CUP
+        - CVE
+        - CZK
+        - DJF
+        - DKK
+        - DOP
+        - DZD
+        - EGP
+        - ERN
+        - ETB
+        - FJD
+        - FKP
+        - FOK
+        - GEL
+        - GGP
+        - GHS
+        - GIP
+        - GMD
+        - GNF
+        - GTQ
+        - GYD
+        - HKD
+        - HNL
+        - HRK
+        - HTG
+        - HUF
+        - IDR
+        - ILS
+        - IMP
+        - IQD
+        - IRR
+        - ISK
+        - JMD
+        - JOD
+        - KES
+        - KGS
+        - KHR
+        - KID
+        - KMF
+        - KRW
+        - KWD
+        - KYD
+        - KZT
+        - LAK
+        - LBP
+        - LKR
+        - LRD
+        - LSL
+        - LYD
+        - MAD
+        - MDL
+        - MGA
+        - MKD
+        - MMK
+        - MNT
+        - MOP
+        - MRU
+        - MUR
+        - MVR
+        - MWK
+        - MXN
+        - MYR
+        - MZN
+        - NAD
+        - NGN
+        - NIO
+        - NOK
+        - NPR
+        - OMR
+        - PAB
+        - PEN
+        - PGK
+        - PHP
+        - PKR
+        - PLN
+        - PYG
+        - QAR
+        - RON
+        - RSD
+        - RWF
+        - SAR
+        - SBD
+        - SCR
+        - SDG
+        - SGD
+        - SHP
+        - SLL
+        - SOS
+        - SRD
+        - SSP
+        - STN
+        - SYP
+        - SZL
+        - THB
+        - TJS
+        - TMT
+        - TND
+        - TOP
+        - TRY
+        - TTD
+        - TVD
+        - TWD
+        - TZS
+        - UAH
+        - UGX
+        - UYU
+        - UZS
+        - VES
+        - VND
+        - VUV
+        - WST
+        - XAF
+        - XCD
+        - XOF
+        - XPF
+        - YER
+        - ZMW
+        - ZWL
+      total_price:
+        title: Total price
+        type: integer
+        maximum: 2147483647
+        minimum: 1
+        x-nullable: true
+      customer_currency:
+        title: Customer currency
+        type: string
+        enum:
+        - USD
+        - EUR
+        - GBP
+        - JPY
+        - AUD
+        - CAD
+        - CHF
+        - CNY
+        - SEK
+        - NZD
+        - INR
+        - BRL
+        - RUB
+        - ZAR
+        - AED
+        - AFN
+        - ALL
+        - AMD
+        - ANG
+        - AOA
+        - ARS
+        - AWG
+        - AZN
+        - BAM
+        - BBD
+        - BDT
+        - BGN
+        - BHD
+        - BIF
+        - BMD
+        - BND
+        - BOB
+        - BSD
+        - BTN
+        - BWP
+        - BYN
+        - BZD
+        - CDF
+        - CLP
+        - COP
+        - CRC
+        - CUP
+        - CVE
+        - CZK
+        - DJF
+        - DKK
+        - DOP
+        - DZD
+        - EGP
+        - ERN
+        - ETB
+        - FJD
+        - FKP
+        - FOK
+        - GEL
+        - GGP
+        - GHS
+        - GIP
+        - GMD
+        - GNF
+        - GTQ
+        - GYD
+        - HKD
+        - HNL
+        - HRK
+        - HTG
+        - HUF
+        - IDR
+        - ILS
+        - IMP
+        - IQD
+        - IRR
+        - ISK
+        - JMD
+        - JOD
+        - KES
+        - KGS
+        - KHR
+        - KID
+        - KMF
+        - KRW
+        - KWD
+        - KYD
+        - KZT
+        - LAK
+        - LBP
+        - LKR
+        - LRD
+        - LSL
+        - LYD
+        - MAD
+        - MDL
+        - MGA
+        - MKD
+        - MMK
+        - MNT
+        - MOP
+        - MRU
+        - MUR
+        - MVR
+        - MWK
+        - MXN
+        - MYR
+        - MZN
+        - NAD
+        - NGN
+        - NIO
+        - NOK
+        - NPR
+        - OMR
+        - PAB
+        - PEN
+        - PGK
+        - PHP
+        - PKR
+        - PLN
+        - PYG
+        - QAR
+        - RON
+        - RSD
+        - RWF
+        - SAR
+        - SBD
+        - SCR
+        - SDG
+        - SGD
+        - SHP
+        - SLL
+        - SOS
+        - SRD
+        - SSP
+        - STN
+        - SYP
+        - SZL
+        - THB
+        - TJS
+        - TMT
+        - TND
+        - TOP
+        - TRY
+        - TTD
+        - TVD
+        - TWD
+        - TZS
+        - UAH
+        - UGX
+        - UYU
+        - UZS
+        - VES
+        - VND
+        - VUV
+        - WST
+        - XAF
+        - XCD
+        - XOF
+        - XPF
+        - YER
+        - ZMW
+        - ZWL
+      total_price_in_customer_currency:
+        title: Total price in customer currency
+        type: string
+        format: decimal
+        x-nullable: true
+      variant:
+        title: Variant
+        type: integer
+  GuestOrder:
+    required:
+    - total_price
+    - shipping_address
+    - cart_data
+    type: object
+    properties:
+      currency_code:
+        title: Currency code
+        type: string
+        minLength: 1
+      promo_code:
+        title: Promo code
+        type: string
+        minLength: 1
+      total_price:
+        title: Total price
+        type: number
+      shipping_address:
+        $ref: '#/definitions/Address'
+      billing_address:
+        $ref: '#/definitions/Address'
+      cart_data:
+        type: array
+        items:
+          $ref: '#/definitions/OrderItem'
+      meta_data:
+        title: Meta data
+        type: string
+        readOnly: true
+  Order:
+    required:
+    - line_item
+    - payment_method
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      line_item:
+        type: array
+        items:
+          $ref: '#/definitions/OrderItem'
+      alias:
+        title: Alias
+        type: string
+        format: uuid
+        readOnly: true
+      created_at:
+        title: Created at
+        type: string
+        format: date-time
+        readOnly: true
+      last_modified:
+        title: Last modified
+        type: string
+        format: date-time
+        readOnly: true
+      payment_method:
+        title: Payment method
+        type: string
+        enum:
+        - CREDIT_CARD
+        - PAYPAL
+        - BANK_TRANSFER
+        - CASH_ON_DELIVERY
+      currency:
+        title: Currency
+        description: ISO currency code for the order. This is the base currency in
+          which the total amount will be stored after converting from the customer's
+          currency to the base currency. For example, 'USD' for US Dollars. The base
+          currency is defined in the settings.
+        type: string
+        enum:
+        - USD
+        - EUR
+        - GBP
+        - JPY
+        - AUD
+        - CAD
+        - CHF
+        - CNY
+        - SEK
+        - NZD
+        - INR
+        - BRL
+        - RUB
+        - ZAR
+        - AED
+        - AFN
+        - ALL
+        - AMD
+        - ANG
+        - AOA
+        - ARS
+        - AWG
+        - AZN
+        - BAM
+        - BBD
+        - BDT
+        - BGN
+        - BHD
+        - BIF
+        - BMD
+        - BND
+        - BOB
+        - BSD
+        - BTN
+        - BWP
+        - BYN
+        - BZD
+        - CDF
+        - CLP
+        - COP
+        - CRC
+        - CUP
+        - CVE
+        - CZK
+        - DJF
+        - DKK
+        - DOP
+        - DZD
+        - EGP
+        - ERN
+        - ETB
+        - FJD
+        - FKP
+        - FOK
+        - GEL
+        - GGP
+        - GHS
+        - GIP
+        - GMD
+        - GNF
+        - GTQ
+        - GYD
+        - HKD
+        - HNL
+        - HRK
+        - HTG
+        - HUF
+        - IDR
+        - ILS
+        - IMP
+        - IQD
+        - IRR
+        - ISK
+        - JMD
+        - JOD
+        - KES
+        - KGS
+        - KHR
+        - KID
+        - KMF
+        - KRW
+        - KWD
+        - KYD
+        - KZT
+        - LAK
+        - LBP
+        - LKR
+        - LRD
+        - LSL
+        - LYD
+        - MAD
+        - MDL
+        - MGA
+        - MKD
+        - MMK
+        - MNT
+        - MOP
+        - MRU
+        - MUR
+        - MVR
+        - MWK
+        - MXN
+        - MYR
+        - MZN
+        - NAD
+        - NGN
+        - NIO
+        - NOK
+        - NPR
+        - OMR
+        - PAB
+        - PEN
+        - PGK
+        - PHP
+        - PKR
+        - PLN
+        - PYG
+        - QAR
+        - RON
+        - RSD
+        - RWF
+        - SAR
+        - SBD
+        - SCR
+        - SDG
+        - SGD
+        - SHP
+        - SLL
+        - SOS
+        - SRD
+        - SSP
+        - STN
+        - SYP
+        - SZL
+        - THB
+        - TJS
+        - TMT
+        - TND
+        - TOP
+        - TRY
+        - TTD
+        - TVD
+        - TWD
+        - TZS
+        - UAH
+        - UGX
+        - UYU
+        - UZS
+        - VES
+        - VND
+        - VUV
+        - WST
+        - XAF
+        - XCD
+        - XOF
+        - XPF
+        - YER
+        - ZMW
+        - ZWL
+      total_price:
+        title: Total price
+        description: Total amount of the order in cents, converted from the original
+          currency (customer's currency) to the base currency. For example, if the
+          base currency is USD and the customer_currency is different (e.g., AUD),
+          the total amount will be converted to USD. This converted amount is stored
+          in cents.
+        type: integer
+        maximum: 2147483647
+        minimum: 1
+        x-nullable: true
+      customer_currency:
+        title: Customer currency
+        description: ISO currency code of the original amount paid by the customer.
+          For example, 'AUD' for Australian Dollars.
+        type: string
+        enum:
+        - USD
+        - EUR
+        - GBP
+        - JPY
+        - AUD
+        - CAD
+        - CHF
+        - CNY
+        - SEK
+        - NZD
+        - INR
+        - BRL
+        - RUB
+        - ZAR
+        - AED
+        - AFN
+        - ALL
+        - AMD
+        - ANG
+        - AOA
+        - ARS
+        - AWG
+        - AZN
+        - BAM
+        - BBD
+        - BDT
+        - BGN
+        - BHD
+        - BIF
+        - BMD
+        - BND
+        - BOB
+        - BSD
+        - BTN
+        - BWP
+        - BYN
+        - BZD
+        - CDF
+        - CLP
+        - COP
+        - CRC
+        - CUP
+        - CVE
+        - CZK
+        - DJF
+        - DKK
+        - DOP
+        - DZD
+        - EGP
+        - ERN
+        - ETB
+        - FJD
+        - FKP
+        - FOK
+        - GEL
+        - GGP
+        - GHS
+        - GIP
+        - GMD
+        - GNF
+        - GTQ
+        - GYD
+        - HKD
+        - HNL
+        - HRK
+        - HTG
+        - HUF
+        - IDR
+        - ILS
+        - IMP
+        - IQD
+        - IRR
+        - ISK
+        - JMD
+        - JOD
+        - KES
+        - KGS
+        - KHR
+        - KID
+        - KMF
+        - KRW
+        - KWD
+        - KYD
+        - KZT
+        - LAK
+        - LBP
+        - LKR
+        - LRD
+        - LSL
+        - LYD
+        - MAD
+        - MDL
+        - MGA
+        - MKD
+        - MMK
+        - MNT
+        - MOP
+        - MRU
+        - MUR
+        - MVR
+        - MWK
+        - MXN
+        - MYR
+        - MZN
+        - NAD
+        - NGN
+        - NIO
+        - NOK
+        - NPR
+        - OMR
+        - PAB
+        - PEN
+        - PGK
+        - PHP
+        - PKR
+        - PLN
+        - PYG
+        - QAR
+        - RON
+        - RSD
+        - RWF
+        - SAR
+        - SBD
+        - SCR
+        - SDG
+        - SGD
+        - SHP
+        - SLL
+        - SOS
+        - SRD
+        - SSP
+        - STN
+        - SYP
+        - SZL
+        - THB
+        - TJS
+        - TMT
+        - TND
+        - TOP
+        - TRY
+        - TTD
+        - TVD
+        - TWD
+        - TZS
+        - UAH
+        - UGX
+        - UYU
+        - UZS
+        - VES
+        - VND
+        - VUV
+        - WST
+        - XAF
+        - XCD
+        - XOF
+        - XPF
+        - YER
+        - ZMW
+        - ZWL
+      total_price_in_customer_currency:
+        title: Total price in customer currency
+        description: 'Original amount paid by the customer in the customer''s currency,
+          stored in cents. '
+        type: string
+        format: decimal
+        x-nullable: true
+      status:
+        title: Order Status
+        description: Represents the current stage of the order within its lifecycle.
+        type: string
+        enum:
+        - PENDING
+        - PROCESSING
+        - SHIPPED
+        - DELIVERED
+        - CANCELLED
+        - RETURNED
+      authorize_status:
+        title: Authorization Status
+        description: Represents the authorization status of the order based on fund
+          coverage.
+        type: string
+        enum:
+        - NONE
+        - PARTIAL
+        - FULL
+      charge_status:
+        title: Charge Status
+        description: Represents the charge status of the order based on transaction
+          charges.
+        type: string
+        enum:
+        - NONE
+        - PARTIAL
+        - FULL
+        - OVERCHARGED
+      user:
+        title: User
+        type: integer
+        x-nullable: true
+      vendor:
+        title: Vendor
+        type: integer
+        x-nullable: true
+      shipping_address:
+        title: Shipping address
+        type: integer
+        x-nullable: true
+      billing_address:
+        title: Billing address
+        type: integer
+        x-nullable: true
+      promo_code:
+        title: Promo code
+        type: integer
+        x-nullable: true
+      gift_card:
+        title: Gift card
+        type: integer
+        x-nullable: true
+  AuthenticatedUserOrder:
+    type: object
+    properties:
+      promo_code:
+        title: Promo code
+        type: string
+        minLength: 1
+      total_price:
+        title: Total price
+        description: Total amount of the order in cents, converted from the original
+          currency (customer's currency) to the base currency. For example, if the
+          base currency is USD and the customer_currency is different (e.g., AUD),
+          the total amount will be converted to USD. This converted amount is stored
+          in cents.
+        type: integer
+        maximum: 2147483647
+        minimum: 1
+        x-nullable: true
+      shipping_address:
+        title: Shipping address
+        type: integer
+        x-nullable: true
+      billing_address:
+        title: Billing address
+        type: integer
+        x-nullable: true
+      cart_data:
+        type: array
+        items:
+          type: object
+          additionalProperties:
+            type: string
+            x-nullable: true
+      meta_data:
+        type: array
+        items:
+          type: object
+          additionalProperties:
+            type: string
+            x-nullable: true
+      currency_code:
+        title: Currency code
+        type: string
+        minLength: 1
+  Category:
+    required:
+    - name
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      description:
+        title: Description
+        type: string
+        x-nullable: true
+      subcategories:
+        title: Subcategories
+        type: string
+        readOnly: true
+  Collection:
+    required:
+    - name
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      description:
+        title: Description
+        type: string
+        x-nullable: true
+      is_active:
+        title: Is active
+        type: boolean
+      image:
+        title: Image
+        type: string
+        readOnly: true
+        x-nullable: true
+        format: uri
+  Image:
+    required:
+    - name
+    - image_alt_text
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      created_at:
+        title: Created at
+        type: string
+        format: date-time
+        readOnly: true
+      last_modified:
+        title: Last modified
+        type: string
+        format: date-time
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      image:
+        title: Image
+        type: string
+        readOnly: true
+        format: uri
+      image_alt_text:
+        title: Image alt text
+        type: string
+        maxLength: 255
+        minLength: 1
+      created_by:
+        title: Created by
+        type: integer
+        readOnly: true
+      last_modified_by:
+        title: Last modified by
+        type: integer
+        readOnly: true
+        x-nullable: true
+  ProductVariant:
+    required:
+    - compare_at_price
+    - price
+    - cost_per_unit
+    - sku
+    - product
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      variant_image:
+        type: array
+        items:
+          $ref: '#/definitions/Image'
+        readOnly: true
+      price_in_target_currency:
+        title: Price in target currency
+        type: string
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      compare_at_price:
+        title: Compare at price
+        type: string
+        format: decimal
+      currency:
+        title: Currency
+        type: string
+        enum:
+        - USD
+        - EUR
+        - GBP
+        - JPY
+        - AUD
+        - CAD
+        - CHF
+        - CNY
+        - SEK
+        - NZD
+        - INR
+        - BRL
+        - RUB
+        - ZAR
+        - AED
+        - AFN
+        - ALL
+        - AMD
+        - ANG
+        - AOA
+        - ARS
+        - AWG
+        - AZN
+        - BAM
+        - BBD
+        - BDT
+        - BGN
+        - BHD
+        - BIF
+        - BMD
+        - BND
+        - BOB
+        - BSD
+        - BTN
+        - BWP
+        - BYN
+        - BZD
+        - CDF
+        - CLP
+        - COP
+        - CRC
+        - CUP
+        - CVE
+        - CZK
+        - DJF
+        - DKK
+        - DOP
+        - DZD
+        - EGP
+        - ERN
+        - ETB
+        - FJD
+        - FKP
+        - FOK
+        - GEL
+        - GGP
+        - GHS
+        - GIP
+        - GMD
+        - GNF
+        - GTQ
+        - GYD
+        - HKD
+        - HNL
+        - HRK
+        - HTG
+        - HUF
+        - IDR
+        - ILS
+        - IMP
+        - IQD
+        - IRR
+        - ISK
+        - JMD
+        - JOD
+        - KES
+        - KGS
+        - KHR
+        - KID
+        - KMF
+        - KRW
+        - KWD
+        - KYD
+        - KZT
+        - LAK
+        - LBP
+        - LKR
+        - LRD
+        - LSL
+        - LYD
+        - MAD
+        - MDL
+        - MGA
+        - MKD
+        - MMK
+        - MNT
+        - MOP
+        - MRU
+        - MUR
+        - MVR
+        - MWK
+        - MXN
+        - MYR
+        - MZN
+        - NAD
+        - NGN
+        - NIO
+        - NOK
+        - NPR
+        - OMR
+        - PAB
+        - PEN
+        - PGK
+        - PHP
+        - PKR
+        - PLN
+        - PYG
+        - QAR
+        - RON
+        - RSD
+        - RWF
+        - SAR
+        - SBD
+        - SCR
+        - SDG
+        - SGD
+        - SHP
+        - SLL
+        - SOS
+        - SRD
+        - SSP
+        - STN
+        - SYP
+        - SZL
+        - THB
+        - TJS
+        - TMT
+        - TND
+        - TOP
+        - TRY
+        - TTD
+        - TVD
+        - TWD
+        - TZS
+        - UAH
+        - UGX
+        - UYU
+        - UZS
+        - VES
+        - VND
+        - VUV
+        - WST
+        - XAF
+        - XCD
+        - XOF
+        - XPF
+        - YER
+        - ZMW
+        - ZWL
+      price:
+        title: Price
+        type: string
+        format: decimal
+      cost_per_unit:
+        title: Cost per unit
+        type: string
+        format: decimal
+      track_inventory:
+        title: Track inventory
+        type: boolean
+      stock:
+        title: Stock
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+      low_stock_threshold:
+        title: Stock
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+      stock_status:
+        title: Stock status
+        type: string
+        enum:
+        - IN_STOCK
+        - OUT_OF_STOCK
+      color_code:
+        title: Color code
+        type: string
+        maxLength: 7
+        x-nullable: true
+      color_name:
+        title: Color name
+        type: string
+        maxLength: 50
+        x-nullable: true
+      sku:
+        title: Sku
+        type: string
+        maxLength: 50
+        minLength: 1
+      weight_unit:
+        title: Weight unit
+        type: string
+        enum:
+        - GRAM
+        - KG
+        - LB
+        - OZ
+        - TON
+        x-nullable: true
+      weight_value:
+        title: Weight value
+        type: string
+        format: decimal
+        x-nullable: true
+      product:
+        title: Product
+        type: integer
+  Product:
+    required:
+    - name
+    - summary
+    - description
+    - default_variant
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      summary:
+        title: Summary
+        type: string
+        maxLength: 500
+        minLength: 1
+      description:
+        title: Description
+        type: string
+        maxLength: 500
+        minLength: 1
+      category:
+        title: Category
+        type: integer
+        x-nullable: true
+      brand:
+        title: Brand
+        type: string
+        maxLength: 100
+        x-nullable: true
+      type:
+        title: Type
+        type: string
+        enum:
+        - SIMPLE_PRODUCT
+        - GROUPED_PRODUCT
+        - EXTERNAL_PRODUCT
+        - VARIABLE_PRODUCT
+        - SIMPLE_SUBSCRIPTION
+        - VARIABLE_SUBSCRIPTION
+        - PRODUCT_BUNDLE
+      slug:
+        title: Slug
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        readOnly: true
+        minLength: 1
+      default_variant:
+        $ref: '#/definitions/ProductVariant'
+  ProductDetail:
+    required:
+    - name
+    - summary
+    - description
+    - created_by
+    - default_variant
+    - variants
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      summary:
+        title: Summary
+        type: string
+        maxLength: 500
+        minLength: 1
+      description:
+        title: Description
+        type: string
+        maxLength: 500
+        minLength: 1
+      brand:
+        title: Brand
+        type: string
+        maxLength: 100
+        x-nullable: true
+      type:
+        title: Type
+        type: string
+        enum:
+        - SIMPLE_PRODUCT
+        - GROUPED_PRODUCT
+        - EXTERNAL_PRODUCT
+        - VARIABLE_PRODUCT
+        - SIMPLE_SUBSCRIPTION
+        - VARIABLE_SUBSCRIPTION
+        - PRODUCT_BUNDLE
+      category:
+        title: Category
+        type: integer
+        x-nullable: true
+      collections:
+        type: array
+        items:
+          type: integer
+        uniqueItems: true
+      media:
+        type: array
+        items:
+          type: integer
+        uniqueItems: true
+      created_by:
+        title: Created by
+        type: integer
+      default_variant:
+        $ref: '#/definitions/ProductVariant'
+      variants:
+        type: array
+        items:
+          $ref: '#/definitions/ProductVariant'
+  LoginRequest:
+    required:
+    - email
+    - password
+    type: object
+    properties:
+      email:
+        title: Email
+        type: string
+        format: email
+        minLength: 1
+      password:
+        title: Password
+        type: string
+        minLength: 1
+  Refresh:
+    required:
+    - refresh_token
+    type: object
+    properties:
+      refresh_token:
+        title: Refresh token
+        type: string
+        minLength: 1
+  Signup:
+    required:
+    - password
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      first_name:
+        title: First name
+        type: string
+        maxLength: 150
+      last_name:
+        title: Last name
+        type: string
+        maxLength: 150
+      email:
+        title: Email address
+        type: string
+        format: email
+        maxLength: 254
+      password:
+        title: Password
+        description: Leave empty if no change needed
+        type: string
+        minLength: 1
