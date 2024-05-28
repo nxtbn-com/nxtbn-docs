@@ -1,7 +1,3 @@
-.. Nxtbn documentation master file, created by
-   sphinx-quickstart on Tue May 19 2024.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
 Welcome to Nxtbn's documentation!
 ==================================
@@ -14,7 +10,11 @@ Nxtbn is a Django eCommerce CMS built with Django, Django REST framework, and Re
 
    introduction
    quick_start
-   payment_gateway_integration
+   payment_plugin_installation
+   payment_unified_endpoint
+   payment_plugin_code_example
+   the-why
+   rest-api
 
 Indices and tables
 ==================
