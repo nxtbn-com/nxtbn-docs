@@ -25,8 +25,8 @@ extensions = [
 
 redoc = [
     {
-        'name': 'Batcomputer API',
-        'page': 'storefront/api',
+        'name': 'nxtbn - Storefront API in redoc',
+        'page': 'api/storefront',
         'spec': '_static/redoc/storefront.yml',
         'embed': True,
     },
