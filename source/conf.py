@@ -26,7 +26,7 @@ extensions = [
 redoc = [
     {
         'name': 'nxtbn - Storefront API in redoc',
-        'page': 'api/storefront',
+        'page': 'api/redoc/storefront',
         'spec': '_static/redoc/storefront.yml',
         'embed': True,
     },
