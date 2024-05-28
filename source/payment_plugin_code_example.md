@@ -1,9 +1,9 @@
 
-Plugin Code Example
+Payment Plugin Code Example
 ----------------------------------------------
 
 
-### PaymentPlugin: ABC
+### PaymentPlugin: Abstract Base Class
 ```{admonition} file
 :class: note
 

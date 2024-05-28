@@ -10,7 +10,8 @@ Nxtbn is a Django eCommerce CMS built with Django, Django REST framework, and Re
 
    introduction
    quick_start
-   payment_gateway_integration
+   payment_unified_endpoint
+   payment_plugin_code_example
    the-why
 
 Indices and tables
