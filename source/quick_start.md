@@ -35,13 +35,17 @@ Ready to start? Here's what you need to do:
     ```
     python manage.py migrate
     ```
-7. Run the development server:
+7. Start neccessary data:
+    ```
+    python manage.py nxtbn_init
+    ```
+8. Run the development server:
     ```
     python manage.py runserver
     ```
 
 
-8. API Documentation
+9. API Documentation
 
 - For the index of the docs, visit: [http://127.0.0.1:8000/docs/](http://127.0.0.1:8000/docs/)
 
