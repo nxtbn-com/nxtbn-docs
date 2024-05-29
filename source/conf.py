@@ -30,18 +30,19 @@ redoc = [
         'spec': '_static/redoc/storefront.yml',
         'embed': True,
     },
-    # {
-    #     'name': 'Example API',
-    #     'page': 'example/index',
-    #     'spec': '_static/openapi.yml',
-    #     'opts': {
-    #         'lazy': False,
-    #         'nowarnings': False,
-    #         'nohostname': False,
-    #         'required-props-first': True,
-    #         'expand-responses': ["200", "201"],
-    #     }
-    # },
+    {
+        'name': 'nxtbn - Dashboard API in redoc',
+        'page': 'api/redoc/dashboard',
+        'spec': '_static/redoc/dashboard.yml',
+        'embed': True,
+        # 'opts': {
+        #     'lazy': False,
+        #     'nowarnings': False,
+        #     'nohostname': False,
+        #     'required-props-first': True,
+        #     'expand-responses': ["200", "201"],
+        # }
+    },
 ]
 
 html_baseurl = 'https://docs.nxtbn.com' # 'sphinx_sitemap' specfic

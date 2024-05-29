@@ -1,0 +1,1089 @@
+swagger: '2.0'
+info:
+  title: nxtbn Dashboard API
+  description: API documentation for nxtbn Dashboard
+  version: v1
+basePath: /
+consumes:
+- application/json
+produces:
+- application/json
+securityDefinitions:
+  api_key:
+    type: apiKey
+    in: header
+    name: Authorization
+security:
+- api_key: []
+paths:
+  /core/dashboard/api/pluggin-install-via-git/:
+    post:
+      operationId: core_dashboard_api_pluggin-install-via-git_create
+      description: 'upload plugin via repository url, example url: https://[github/bitbucket/gitlab].com/nxtbn-com/stripe-payment-link'
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/PluginInstall'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/PluginInstall'
+      tags:
+      - core
+    parameters: []
+  /core/dashboard/api/upload-pluggins/:
+    post:
+      operationId: core_dashboard_api_upload-pluggins_create
+      description: ''
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+      - core
+    parameters: []
+  /filemanager/dashboard/api/document/{id}/:
+    get:
+      operationId: filemanager_dashboard_api_document_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Document'
+      tags:
+      - filemanager
+    put:
+      operationId: filemanager_dashboard_api_document_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Document'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Document'
+      tags:
+      - filemanager
+    patch:
+      operationId: filemanager_dashboard_api_document_partial_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Document'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Document'
+      tags:
+      - filemanager
+    delete:
+      operationId: filemanager_dashboard_api_document_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+      - filemanager
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this document.
+      required: true
+      type: integer
+  /filemanager/dashboard/api/documents/:
+    get:
+      operationId: filemanager_dashboard_api_documents_list
+      description: ''
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+            - count
+            - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/Document'
+      tags:
+      - filemanager
+    post:
+      operationId: filemanager_dashboard_api_documents_create
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Document'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Document'
+      tags:
+      - filemanager
+    parameters: []
+  /filemanager/dashboard/api/image/{id}/:
+    get:
+      operationId: filemanager_dashboard_api_image_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Image'
+      tags:
+      - filemanager
+    put:
+      operationId: filemanager_dashboard_api_image_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Image'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Image'
+      tags:
+      - filemanager
+    patch:
+      operationId: filemanager_dashboard_api_image_partial_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Image'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Image'
+      tags:
+      - filemanager
+    delete:
+      operationId: filemanager_dashboard_api_image_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+      - filemanager
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this image.
+      required: true
+      type: integer
+  /filemanager/dashboard/api/images/:
+    get:
+      operationId: filemanager_dashboard_api_images_list
+      description: ''
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+            - count
+            - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/Image'
+      tags:
+      - filemanager
+    post:
+      operationId: filemanager_dashboard_api_images_create
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Image'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Image'
+      tags:
+      - filemanager
+    parameters: []
+  /order/dashboard/api/orders/:
+    get:
+      operationId: order_dashboard_api_orders_list
+      description: ''
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+            - count
+            - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/Order'
+      tags:
+      - order
+    parameters: []
+  /order/dashboard/api/orders/{id}/:
+    get:
+      operationId: order_dashboard_api_orders_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Order'
+      tags:
+      - order
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this order.
+      required: true
+      type: integer
+  /order/dashboard/api/stats/:
+    get:
+      operationId: order_dashboard_api_stats_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - order
+    parameters: []
+  /payment/dashboard/api/refund/{order_alias}/:
+    put:
+      operationId: payment_dashboard_api_refund_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Refund'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Refund'
+      tags:
+      - payment
+    patch:
+      operationId: payment_dashboard_api_refund_partial_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Refund'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Refund'
+      tags:
+      - payment
+    parameters:
+    - name: order_alias
+      in: path
+      required: true
+      type: string
+  /product/dashboard/api/categories/:
+    get:
+      operationId: product_dashboard_api_categories_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/RecursiveCategory'
+      tags:
+      - product
+    post:
+      operationId: product_dashboard_api_categories_create
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/RecursiveCategory'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/RecursiveCategory'
+      tags:
+      - product
+    parameters: []
+  /product/dashboard/api/categories/{id}/:
+    get:
+      operationId: product_dashboard_api_categories_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/category_dashboard_get'
+      tags:
+      - product
+    put:
+      operationId: product_dashboard_api_categories_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/category_dashboard_get'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/category_dashboard_get'
+      tags:
+      - product
+    patch:
+      operationId: product_dashboard_api_categories_partial_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/category_dashboard_get'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/category_dashboard_get'
+      tags:
+      - product
+    delete:
+      operationId: product_dashboard_api_categories_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+      - product
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this Category.
+      required: true
+      type: integer
+  /product/dashboard/api/collections/:
+    get:
+      operationId: product_dashboard_api_collections_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/collection_dashboard_get'
+      tags:
+      - product
+    post:
+      operationId: product_dashboard_api_collections_create
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/collection_dashboard_get'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/collection_dashboard_get'
+      tags:
+      - product
+    parameters: []
+  /product/dashboard/api/collections/{id}/:
+    get:
+      operationId: product_dashboard_api_collections_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/collection_dashboard_get'
+      tags:
+      - product
+    put:
+      operationId: product_dashboard_api_collections_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/collection_dashboard_get'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/collection_dashboard_get'
+      tags:
+      - product
+    patch:
+      operationId: product_dashboard_api_collections_partial_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/collection_dashboard_get'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/collection_dashboard_get'
+      tags:
+      - product
+    delete:
+      operationId: product_dashboard_api_collections_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+      - product
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this Collection.
+      required: true
+      type: integer
+  /product/dashboard/api/products/:
+    get:
+      operationId: product_dashboard_api_products_list
+      description: ''
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+            - count
+            - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/product_dashboard_get'
+      tags:
+      - product
+    post:
+      operationId: product_dashboard_api_products_create
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/product_dashboard_get'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/product_dashboard_get'
+      tags:
+      - product
+    parameters: []
+  /product/dashboard/api/products/{id}/:
+    get:
+      operationId: product_dashboard_api_products_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/product_dashboard_get'
+      tags:
+      - product
+    put:
+      operationId: product_dashboard_api_products_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/product_dashboard_get'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/product_dashboard_get'
+      tags:
+      - product
+    patch:
+      operationId: product_dashboard_api_products_partial_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/product_dashboard_get'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/product_dashboard_get'
+      tags:
+      - product
+    delete:
+      operationId: product_dashboard_api_products_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+      - product
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this product.
+      required: true
+      type: integer
+definitions:
+  PluginInstall:
+    required:
+    - git_url
+    - plugin_type
+    type: object
+    properties:
+      git_url:
+        title: Git url
+        type: string
+        format: uri
+        minLength: 1
+      plugin_type:
+        title: Plugin type
+        type: string
+        enum:
+        - PAYMENT_PROCESSOR
+        - CURRENCY_BACKEND
+        - GENERAL
+  Document:
+    required:
+    - name
+    - image_alt_text
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      created_at:
+        title: Created at
+        type: string
+        format: date-time
+        readOnly: true
+      last_modified:
+        title: Last modified
+        type: string
+        format: date-time
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      document:
+        title: Document
+        type: string
+        readOnly: true
+        format: uri
+      image_alt_text:
+        title: Image alt text
+        type: string
+        maxLength: 255
+        minLength: 1
+      created_by:
+        title: Created by
+        type: integer
+        readOnly: true
+      last_modified_by:
+        title: Last modified by
+        type: integer
+        readOnly: true
+        x-nullable: true
+  Image:
+    required:
+    - name
+    - image_alt_text
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      created_at:
+        title: Created at
+        type: string
+        format: date-time
+        readOnly: true
+      last_modified:
+        title: Last modified
+        type: string
+        format: date-time
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      image:
+        title: Image
+        type: string
+        readOnly: true
+        format: uri
+      image_alt_text:
+        title: Image alt text
+        type: string
+        maxLength: 255
+        minLength: 1
+      created_by:
+        title: Created by
+        type: integer
+        readOnly: true
+      last_modified_by:
+        title: Last modified by
+        type: integer
+        readOnly: true
+        x-nullable: true
+  OrderLineItem:
+    required:
+    - variant
+    - quantity
+    - price_per_unit
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      variant:
+        title: Variant
+        type: integer
+      quantity:
+        title: Quantity
+        type: integer
+        maximum: 2147483647
+        minimum: 1
+      price_per_unit:
+        title: Price per unit
+        type: string
+        format: decimal
+      total_price:
+        title: Total price
+        type: integer
+        maximum: 2147483647
+        minimum: 1
+        x-nullable: true
+  Order:
+    required:
+    - payment_method
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      user:
+        title: User
+        type: string
+        readOnly: true
+      vendor:
+        title: Vendor
+        type: string
+        readOnly: true
+        x-nullable: true
+      payment_method:
+        title: Payment method
+        type: string
+        enum:
+        - CREDIT_CARD
+        - PAYPAL
+        - BANK_TRANSFER
+        - CASH_ON_DELIVERY
+      shipping_address:
+        title: Shipping address
+        type: string
+        readOnly: true
+        x-nullable: true
+      billing_address:
+        title: Billing address
+        type: string
+        readOnly: true
+        x-nullable: true
+      total_price:
+        title: Total price
+        description: Total amount of the order in cents, converted from the original
+          currency (customer's currency) to the base currency. For example, if the
+          base currency is USD and the customer_currency is different (e.g., AUD),
+          the total amount will be converted to USD. This converted amount is stored
+          in cents.
+        type: integer
+        maximum: 2147483647
+        minimum: 1
+        x-nullable: true
+      status:
+        title: Order Status
+        description: Represents the current stage of the order within its lifecycle.
+        type: string
+        enum:
+        - PENDING
+        - PROCESSING
+        - SHIPPED
+        - DELIVERED
+        - CANCELLED
+        - RETURNED
+      authorize_status:
+        title: Authorization Status
+        description: Represents the authorization status of the order based on fund
+          coverage.
+        type: string
+        enum:
+        - NONE
+        - PARTIAL
+        - FULL
+      charge_status:
+        title: Charge Status
+        description: Represents the charge status of the order based on transaction
+          charges.
+        type: string
+        enum:
+        - NONE
+        - PARTIAL
+        - FULL
+        - OVERCHARGED
+      promo_code:
+        title: Promo code
+        type: string
+        readOnly: true
+        x-nullable: true
+      gift_card:
+        title: Gift card
+        type: string
+        readOnly: true
+        x-nullable: true
+      line_items:
+        type: array
+        items:
+          $ref: '#/definitions/OrderLineItem'
+        readOnly: true
+  Refund:
+    required:
+    - amount
+    type: object
+    properties:
+      amount:
+        title: Amount
+        type: string
+        format: decimal
+  RecursiveCategory:
+    required:
+    - name
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      description:
+        title: Description
+        type: string
+        x-nullable: true
+      subcategories:
+        title: Subcategories
+        type: string
+        readOnly: true
+  category_dashboard_get:
+    required:
+    - name
+    - subcategories
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      description:
+        title: Description
+        type: string
+        x-nullable: true
+      parent:
+        title: Parent
+        type: integer
+        x-nullable: true
+      subcategories:
+        type: array
+        items:
+          type: integer
+        uniqueItems: true
+  collection_dashboard_get:
+    required:
+    - name
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      description:
+        title: Description
+        type: string
+        x-nullable: true
+      is_active:
+        title: Is active
+        type: boolean
+      image:
+        title: Image
+        type: string
+        readOnly: true
+        x-nullable: true
+        format: uri
+  product_variant_dashboard_get:
+    required:
+    - product
+    - compare_at_price
+    - price
+    - cost_per_unit
+    - sku
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      product:
+        title: Product
+        type: integer
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      compare_at_price:
+        title: Compare at price
+        type: string
+        format: decimal
+      price:
+        title: Price
+        type: string
+        format: decimal
+      cost_per_unit:
+        title: Cost per unit
+        type: string
+        format: decimal
+      sku:
+        title: Sku
+        type: string
+        maxLength: 50
+        minLength: 1
+  product_dashboard_get:
+    required:
+    - name
+    - summary
+    - description
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      summary:
+        title: Summary
+        type: string
+        maxLength: 500
+        minLength: 1
+      description:
+        title: Description
+        type: string
+        maxLength: 500
+        minLength: 1
+      media:
+        type: array
+        items:
+          type: integer
+        uniqueItems: true
+      category:
+        title: Category
+        type: integer
+        x-nullable: true
+      vendor:
+        title: Vendor
+        type: integer
+        x-nullable: true
+      brand:
+        title: Brand
+        type: string
+        maxLength: 100
+        x-nullable: true
+      type:
+        title: Type
+        type: string
+        enum:
+        - SIMPLE_PRODUCT
+        - GROUPED_PRODUCT
+        - EXTERNAL_PRODUCT
+        - VARIABLE_PRODUCT
+        - SIMPLE_SUBSCRIPTION
+        - VARIABLE_SUBSCRIPTION
+        - PRODUCT_BUNDLE
+      related_to:
+        type: array
+        items:
+          type: integer
+        uniqueItems: true
+      default_variant:
+        title: Default variant
+        type: integer
+        x-nullable: true
+      collections:
+        type: array
+        items:
+          type: integer
+        uniqueItems: true
+      variants:
+        type: array
+        items:
+          $ref: '#/definitions/product_variant_dashboard_get'
+        readOnly: true
