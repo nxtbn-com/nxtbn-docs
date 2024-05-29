@@ -62,5 +62,3 @@ Currency Storage Strategies
 ----------------------------
 
 nxtbn employs strategic storage methods to minimize rounding errors by storing currency values as either main units or subunits. The specific approach for each currency is outlined in the ``money_validator_map`` within our models.
-
-This README aims to provide developers with a concise guide on implementing and managing multicurrency functionalities effectively in nxtbn.
