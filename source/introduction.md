@@ -4,7 +4,7 @@ Welcome to Next Billion Native Commerce (nxtbn), the ultimate solution for busin
 
 ## 🌟 Key Features
 
-- **Single-Language or Multi-Language & Single Language-Currency or Multi-Currency Support:** Cater to a global audience with built-in language and currency options.
+- **Single-Language or Multi-Language & Single-Currency or Multi-Currency Support:** Cater to a global audience with built-in language and currency options.
 - **Payment Gateways & Selling Channels:** Integrate with major payment gateways and expand across different selling platforms effortlessly.
 - **Supports All E-Commerce Models:** Whether you're selling physical products, digital downloads, or services, nxtbn has you covered.
 - **Inventory and Stock Management:** Ideal for those selling physical products. Track inventory, manage stock, and integrate with shipping solutions for seamless order fulfillment.
