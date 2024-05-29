@@ -12,7 +12,9 @@ nxtbn provides two main methods to implement multicurrency:
    This approach handles conversion at the client level but is less secure and prone to inconsistencies due to fluctuating exchange rates.
 
 2. **Backend Currency Conversion with Plugins** (Recommended):
-   This method involves server-side currency conversion, using various plugins for flexibility and accuracy. We recommend starting with our `Free Currency API plugin <https://github.com/nxtbn-com/freecurrencyapi>`_, though other APIs can also be integrated as needed.
+   This method involves server-side currency conversion, using various plugins for flexibility and accuracy. 
+   
+   We added example currency plugin here, please read readme.md file of this repo: https://github.com/nxtbn-com/freecurrencyapi (We are not affiliated with this freecurrencyapi provider, it is just an example plugin to show how to integrate currency conversion plugin with nxtbn. You can use any other plugin as well.)
 
 Setup and Configuration
 -----------------------
