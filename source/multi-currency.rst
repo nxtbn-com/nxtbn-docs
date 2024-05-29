@@ -1,34 +1,39 @@
-nxtbn Multicurrency Support
+Multicurrency Support
 ===========================
 
-nxtbn supports robust multicurrency functionalities, enabling global e-commerce transactions through secure backend currency conversion.
+nxtbn facilitates robust multicurrency functionalities, allowing for global e-commerce transactions. The platform supports multicurrency through backend conversion mechanisms that ensure accuracy and consistency.
 
 Implementing Multicurrency
 --------------------------
 
-**Backend Currency Conversion with Plugins**:
-   Utilize backend currency conversion for accuracy and consistency. nxtbn supports various currency conversion plugins, including the recommended `Free Currency API plugin <https://github.com/nxtbn-com/freecurrencyapi>`_. You may integrate any other suitable currency API as needed.
+nxtbn provides two main methods to implement multicurrency:
+
+1. **Client-side Currency Conversion** (Not Recommended):
+   This approach handles conversion at the client level but is less secure and prone to inconsistencies due to fluctuating exchange rates.
+
+2. **Backend Currency Conversion with Plugins** (Recommended):
+   This method involves server-side currency conversion, using various plugins for flexibility and accuracy. We recommend starting with our `Free Currency API plugin <https://github.com/nxtbn-com/freecurrencyapi>`_, though other APIs can also be integrated as needed.
 
 Setup and Configuration
 -----------------------
 
 **Activating Multicurrency**:
-   Ensure multicurrency is enabled in your nxtbn settings.
+   Ensure that multicurrency support is enabled in your nxtbn settings.
 
 **Currency Conversion Handling**:
-   Manage currency conversions using the ``Accept-Currency`` HTTP header in API requests. This approach allows middleware to seamlessly process the desired currency.
+   Manage currency conversions through the ``Accept-Currency`` HTTP header in API requests, which allows middleware to process the desired currency seamlessly.
 
 **Backend Currency Access**:
-   Access the currency specified in requests within your backend logic:
+   In your backend logic, access the currency specified in requests as follows:
    - **In Views**: Use ``self.request.currency``
    - **In Serializers**: Use ``self.context['request'].currency``
 
-   The default currency is the ``BASE_CURRENCY`` specified in settings if no currency is specified in the request.
+   If no specific currency is requested, the system defaults to the `BASE_CURRENCY` from settings.
 
 Example: Currency Conversion in Serializers
 ------------------------------------------
 
-Here is how to implement a serializer for currency conversion:
+Here’s how you can handle currency conversion within serializers:
 
 .. code-block:: python
 
@@ -49,11 +54,11 @@ Here is how to implement a serializer for currency conversion:
             currency_code = self.context.get('request').currency
             return CurrencyBackend().to_target_currency(currency_code, obj.price)
 
-This example demonstrates how to apply currency conversion to product prices based on the currency code provided in API requests.
+This serializer demonstrates applying currency conversion based on the currency code provided in API requests.
 
 Currency Storage Strategies
 ----------------------------
 
-To prevent rounding errors, nxtbn supports storing currency values as main units or subunits. The approach is detailed in the ``money_validator_map`` within our models, ensuring accurate financial data handling.
+nxtbn employs strategic storage methods to minimize rounding errors by storing currency values as either main units or subunits. The specific approach for each currency is outlined in the ``money_validator_map`` within our models.
 
-This README provides a concise guide for developers on implementing and managing multicurrency functionalities in nxtbn.
+This README aims to provide developers with a concise guide on implementing and managing multicurrency functionalities effectively in nxtbn.
