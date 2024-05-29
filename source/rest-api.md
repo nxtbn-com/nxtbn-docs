@@ -8,10 +8,9 @@ nxtbn provides comprehensive APIs for every kind of use case, including dashboar
 - **ReDoc Docs URL**: [Storefront ReDoc Docs](https://docs.nxtbn.com/api/redoc/storefront.html)
 
 ## Dashboard
-comming soon.......... chil ! 
 
 <!-- - **Swagger Docs URL**: [Dashboard Swagger Docs](https://api.nxtbn.com/dashboard/swagger) -->
-<!-- - **ReDoc Docs URL**: [Dashboard ReDoc Docs](https://docs.nxtbn.com/api/redoc/dashboard.html) -->
+- **ReDoc Docs URL**: [Dashboard ReDoc Docs](https://docs.nxtbn.com/api/redoc/dashboard.html)
 
 <!-- ## General Purpose (Webhook/IPN, etc.)
 

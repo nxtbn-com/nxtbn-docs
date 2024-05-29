@@ -1,11 +1,8 @@
 swagger: '2.0'
 info:
-  title: nxtbn API
-  description: API documentation for nxtbn App
+  title: nxtbn Storefront API
+  description: API documentation for nxtbn Storefront
   version: v1
-host: 127.0.0.1:8001
-schemes:
-- http
 basePath: /
 consumes:
 - application/json
@@ -76,7 +73,7 @@ paths:
               results:
                 type: array
                 items:
-                  $ref: '#/definitions/Order'
+                  $ref: '#/definitions/order_storefront_get'
       tags:
       - order
     parameters: []
@@ -790,7 +787,8 @@ definitions:
         minLength: 1
       total_price:
         title: Total price
-        type: number
+        type: string
+        format: decimal
       shipping_address:
         $ref: '#/definitions/Address'
       billing_address:
@@ -803,7 +801,7 @@ definitions:
         title: Meta data
         type: string
         readOnly: true
-  Order:
+  order_storefront_get:
     required:
     - line_item
     - payment_method
