@@ -13,7 +13,7 @@ Ready to start? Here's what you need to do:
 
 1. Clone the repository:
     ```
-    git clone git@github.com:nxtbn-com/nxtbn.git
+    git clone https://github.com/nxtbn-com/nxtbn.git
     ```
 2. Navigate to the project directory:
     ```
