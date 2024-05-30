@@ -24,7 +24,7 @@ To run a live server that rebuilds the documentation upon changes, use the follo
 ## OpenAPI Info Generation
 
 In the nxtbn project, run the following command to generate the OpenAPI documentation:
-    ```sh
+    ```
     python3 manage.py generate_nxtbn_api_docs
     ```
 This will generate two separate YAML files:
