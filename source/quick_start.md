@@ -61,7 +61,7 @@ Ready to start? Here's what you need to do:
 
 ## Directory Structure
 
-.
+```
 ├── nxtbn
 │   ├── cart
 │   │   ├── api
@@ -156,3 +156,4 @@ Ready to start? Here's what you need to do:
 └── templates
     ├── account
     └── admin
+```
