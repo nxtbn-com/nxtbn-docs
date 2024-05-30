@@ -12,6 +12,12 @@ Ready to start? Here's what you need to do:
 ## Install Backend for Development
 
 1. Clone the repository:
+
+    if you set ssh key already:
+    ```
+    git clone git@github.com:nxtbn-com/nxtbn.git
+    ```
+    if no ssh key set:
     ```
     git clone https://github.com/nxtbn-com/nxtbn.git
     ```
@@ -52,3 +58,101 @@ Ready to start? Here's what you need to do:
 - For dashboard docs in Swagger, visit: [http://127.0.0.1:8000/docs-dashboard-swagger/](http://127.0.0.1:8000/docs-dashboard-swagger/)
 
 - For storefront API docs in Swagger, visit: [http://127.0.0.1:8000/docs-storefront-swagger/](http://127.0.0.1:8000/docs-storefront-swagger/)
+
+## Directory Structure
+
+.
+├── nxtbn
+│   ├── cart
+│   │   ├── api
+│   │   │   ├── dashboard
+│   │   │   └── storefront
+│   │   └── migrations
+│   ├── checkout
+│   │   ├── api
+│   │   │   ├── dashboard
+│   │   │   └── storefront
+│   │   └── migrations
+│   ├── core
+│   │   ├── api
+│   │   │   ├── dashboard
+│   │   │   └── storefront
+│   │   ├── currency
+│   │   ├── management
+│   │   │   └── commands
+│   │   └── migrations
+│   ├── discount
+│   │   └── migrations
+│   ├── filemanager
+│   │   ├── api
+│   │   │   ├── dashboard
+│   │   │   └── storefront
+│   │   └── migrations
+│   ├── gift_card
+│   │   └── migrations
+│   ├── home
+│   │   ├── api
+│   │   │   ├── dashboard
+│   │   │   └── storefront
+│   │   └── migrations
+│   ├── invoice
+│   │   ├── api
+│   │   │   ├── dashboard
+│   │   │   └── storefront
+│   │   └── migrations
+│   ├── order
+│   │   ├── api
+│   │   │   ├── dashboard
+│   │   │   └── storefront
+│   │   ├── management
+│   │   │   └── commands
+│   │   └── migrations
+│   ├── payment
+│   │   ├── api
+│   │   │   ├── dashboard
+│   │   │   └── storefront
+│   │   ├── migrations
+│   │   └── plugins
+│   ├── plugins
+│   │   ├── migrations
+│   │   └── sources
+│   ├── post
+│   │   └── migrations
+│   ├── product
+│   │   ├── api
+│   │   │   ├── dashboard
+│   │   │   └── storefront
+│   │   ├── management
+│   │   │   └── commands
+│   │   └── migrations
+│   ├── seeder_files
+│   ├── seo
+│   │   ├── api
+│   │   │   ├── dashboard
+│   │   │   └── storefront
+│   │   └── migrations
+│   ├── tax
+│   │   ├── api
+│   │   │   ├── dashboard
+│   │   │   └── storefront
+│   │   └── migrations
+│   ├── users
+│   │   ├── api
+│   │   │   ├── dashboard
+│   │   │   └── storefront
+│   │   ├── management
+│   │   │   └── commands
+│   │   ├── migrations
+│   │   ├── tests
+│   │   └── utils
+│   └── vendor
+│       ├── api
+│       │   ├── dashboard
+│       │   └── storefront
+│       └── migrations
+├── proxy
+├── scripts
+├── static
+└── templates
+    ├── account
+    └── admin
