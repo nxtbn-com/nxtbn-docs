@@ -17,7 +17,7 @@ We use Sphinx for our documentation. To build the documentation in HTML format, 
 ## Live Server
 
 To run a live server that rebuilds the documentation upon changes, use the following command:
-    ```sh
+    ```
     sphinx-autobuild source build/html
     ```
 
