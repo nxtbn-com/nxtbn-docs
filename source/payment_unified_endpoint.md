@@ -1,30 +1,33 @@
 # Payment Integration Order API
 
-
 ### Overview
 
-The Unified Payment Gateway Architecture is designed to simplify the integration of various payment gateways into a single, cohesive system. This architecture allows developers to easily add and manage different payment gateways such as Stripe, PayPal, 2Checkout, Razorpay, Authorize.net, Squareup, thousand + other payment gateway by following a standardized plugin approach. 
+The Unified Payment Gateway Architecture is designed to streamline the integration of various payment gateways into a single, cohesive system. This architecture allows developers to easily add and manage different payment gateways such as Stripe, PayPal, 2Checkout, Razorpay, Authorize.net, Squareup, and thousands of other payment gateways by following a standardized plugin approach.
 
->The architecture is simple: Single API for all payment gateways
+> The architecture is simple: Single API for all payment gateways.
 
+### Guest User Endpoint
 
-
-### For Guest User Endpoint
-
-`API: POST: /order/storefront/api/guest-user-order-create/{payment_plugin_id}/`
+`API: POST /order/storefront/api/guest-user-order-create/`
 
 ### Returning User Endpoint
 
-`API: POST /order/storefront/api/user-order-create/{payment_plugin_id}/`
+`API: POST /order/storefront/api/user-order-create/`
 
-If you allow only authenticated users to place orders, then this API is for you. The payload and URL argument are the same as the guest order API.
+Use this API if you allow only authenticated users to place orders. The payload and URL arguments are the same as those for the guest order API.
+
+### Payment
+
+`API: POST /payment/storefront/api/start-payment/{payment_plugin_id}/`
+
+When you send a request to this URL, you will receive a URL from the payment gateway to complete the payment.
 
 ### Webhook & IPN
 
 `API: POST /payment/storefront/api/webhook-view/{payment_plugin_id}/`
 
-So, you have already integrated the API and are accepting payments, but how does your store backend know which user paid for what? That is where we come with a single webhook listener for all APIs.
+Once you have integrated the API and are accepting payments, the webhook listener helps your store backend identify which user paid for what. This single webhook listener works for all APIs.
 
 ### Definition
 
-`payment_plugin_id` is a URL argument that is the name of the payment plugin you installed. Let's say you have installed/built a payment plugin for Stripe. When you install or build, the plugin will be located here: `nxtbn.payment.plugins.stripe`. So here, `stripe` is your `payment_plugin_id`. Similarly, if you install PayPal or Authorize.Net, it will be located here: `nxtbn.payment.plugins.paypal`, and here, your `payment_plugin_id` is `'paypal'`. Similar work for other payment gateways too.
+`payment_plugin_id` is a URL argument representing the name of the payment plugin you installed. For example, if you have installed or built a payment plugin for Stripe, it will be located at `nxtbn.payment.plugins.stripe`. Here, `stripe` is your `payment_plugin_id`. Similarly, for PayPal or Authorize.Net, the plugins will be located at `nxtbn.payment.plugins.paypal` and `nxtbn.payment.plugins.authorize_net`, respectively, making `'paypal'` or `'authorize_net'` your `payment_plugin_id`. The same applies to other payment gateways as well.
