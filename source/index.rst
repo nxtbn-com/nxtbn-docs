@@ -2,6 +2,10 @@
 Welcome to Nxtbn's documentation!
 ==================================
 
+.. image:: ../_static/dashboard.png
+   :alt: Django NXTBN ecommerce dashboard
+
+
 Nxtbn is a Django eCommerce CMS built with Django, Django REST framework, and ReactJS.
 
 .. toctree::
