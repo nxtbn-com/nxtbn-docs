@@ -2,6 +2,8 @@
 
 Welcome to Next Billion Native Commerce (nxtbn), the ultimate solution for businesses looking for a flexible, scalable, and open-source E-commerce CMS. Built with Django and ReactJS, nxtbn stands out as the leading choice for enterprises seeking scalability and adaptability. 🚀
 
+![Django NXTBN ecommerce dashboard](../_static/dashboard.png)
+
 ## 🌟 Key Features
 
 - **Multi-Language & Multi-Currency Support:** Cater to a global audience with built-in language and currency options.
@@ -17,6 +19,8 @@ Welcome to Next Billion Native Commerce (nxtbn), the ultimate solution for busin
 - **Git-Friendly:** Manage with Git, simplifying version control and collaboration.
 - **Elasticsearch Integration:** Enhance user experience with fast and efficient search.
 - **Social Media Authentication & More:** Built-in support for social media authentication, OTP, SMS gateway, email SMTP, push notifications, and marketing tools.
+
+
 
 ## What Makes Nxtbn Special?
 
