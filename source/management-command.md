@@ -25,6 +25,8 @@ To smooth your development flow, please get familiar with these commands to help
 
 8. `python3 manage.py install_plugin_via_zip_url`
    - Install plugin via zip url: example command: python3 manage.py install_plugin_via_zip_url https://github.com/nxtbn-com/<PLUGIN NAME>/archive/refs/tags/1.0.0.zip
+  
+9. `python3 manage.py register_plugin` to register a plugin, argument is directory name
 
 For other commands based on Django, please check this documentation: [Django management Commands](https://docs.djangoproject.com/en/5.0/ref/django-admin/#django-admin-and-manage-py). These are not related to nxtbn but are good for handling things smartly.
 
