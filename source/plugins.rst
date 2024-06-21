@@ -8,3 +8,4 @@ Plugin Cookbook
 
    plugins/installation
    plugins/development
+   plugins/basic
