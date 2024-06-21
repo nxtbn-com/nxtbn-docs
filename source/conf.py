@@ -97,7 +97,7 @@ html_theme_options = {
     "sidebar_hide_name": True,
     "navigation_with_keys": True,
     "top_of_page_buttons": ["view", "edit"],
-    "announcement": "We will launch the stable version on July 1st, 2024. We are seeking your feedback",
+    "announcement": "This project is not yet production-grade. Please wait for the final announcement.",
     "source_repository": "https://github.com/nxtbn-com/nxtbn-docs",
     "source_branch": "main",
     "source_directory": "source",
