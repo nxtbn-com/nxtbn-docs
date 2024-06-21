@@ -1,10 +1,10 @@
 
 Plugin Cookbook
-================
+----------------------------------
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    plugins/installation
    plugins/development
