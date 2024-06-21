@@ -23,20 +23,20 @@ python3 manage.py install_plugin_via_zip_url <plugin_zip_url>
 Example:
 
 ```
-python3 manage.py install_plugin_via_zip_url www.example.com/someplugin.zip
+python manage.py install_plugin_via_zip_url www.example.com/someplugin.zip
 ```
 
 To activate the plugin, run:
 
 ```
-python3 manage.py toggle_plugin_status activate <YOUR_PLUGIN_NAME>
+python manage.py toggle_plugin_status activate <YOUR_PLUGIN_NAME>
 
 ```
 
 To deactivate, use the deactivate flag:
 
 ```
-python3 manage.py toggle_plugin_status deactivate <YOUR_PLUGIN_NAME>
+python manage.py toggle_plugin_status deactivate <YOUR_PLUGIN_NAME>
 
 ```
 
@@ -48,7 +48,7 @@ Move your plugin to nxtbn/plugins/source/.
 
 ***Note***: The plugin will not be registered automatically if you do manually. To register it, run:
 ```
-python3 manage.py register_plugin <YOUR_PLUGIN_NAME>
+python manage.py register_plugin <YOUR_PLUGIN_NAME>
 ```
 
 Alternatively, you can register the plugin via the Django admin panel or the nxtbn dashboard.
