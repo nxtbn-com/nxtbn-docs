@@ -23,6 +23,9 @@ To smooth your development flow, please get familiar with these commands to help
 7. `python manage.py populate_fake_users`
    - Generates fake user accounts. You can specify the number of fake users you want to generate by passing an argument to the command. This is useful for testing user-related features.
 
+8. `python3 manage.py install_plugin_via_zip_url`
+   - Install plugin via zip url: example command: python3 manage.py install_plugin_via_zip_url https://github.com/nxtbn-com/<PLUGIN NAME>/archive/refs/tags/1.0.0.zip
+
 For other commands based on Django, please check this documentation: [Django management Commands](https://docs.djangoproject.com/en/5.0/ref/django-admin/#django-admin-and-manage-py). These are not related to nxtbn but are good for handling things smartly.
 
 
