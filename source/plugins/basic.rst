@@ -1,13 +1,13 @@
 Plugin Basics
-----------------------------------
+==============
 
 Getting Started
----------------
+----------------
 
 A nxtbn plugin is essentially a Python file with plugin metadata in its header. It's recommended to organize your plugin's files within a directory for better organization.
 
 Creating a New Plugin
----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 To create a new plugin, follow these steps:
 
@@ -17,7 +17,8 @@ To create a new plugin, follow these steps:
 4. Inside the directory, create two Python files: ``__init__.py`` and ``your_plugin_name.py``.
 
 Example (Unix Command Line)
----------------------------
+::::::::::::::::::
+
 
 .. code-block:: bash
 
@@ -27,7 +28,8 @@ Example (Unix Command Line)
    touch xpay/somename_xpay.py
 
 Initialization (Example ``__init__.py``)
------------------------------------------
+::::::::::::::::::
+
 
 .. code-block:: python
 

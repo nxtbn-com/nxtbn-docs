@@ -1,10 +1,10 @@
 Plugin Installation
-----------------------------------
+====================
 
 In nxtbn Commerce, you can install plugins in three ways:
 
 1. Via nxtbn Commerce Dashboard
-------------------------
+::::::::::::::::::
 
 Login to your dashboard and follow these steps:
 
@@ -18,7 +18,7 @@ Login to your dashboard and follow these steps:
 - Go to **Plugins > Installed Plugins > Inactive Plugins** and activate the plugin.
 
 2. Via CLI
-----------
+::::::::::::::::::
 
 If you are a developer, you can install a plugin via the CLI using the following command:
 
@@ -45,7 +45,7 @@ To deactivate, use the deactivate flag:
    python manage.py toggle_plugin_status deactivate <YOUR_PLUGIN_NAME>
 
 3. Manual Installation
-----------------------
+::::::::::::::::::
 
 If you have a plugin file, manually move your plugin to ``nxtbn/plugins/source/``.
 
